@@ -71,11 +71,7 @@ public class BackgroundWorker extends AsyncTask<MyClassParams, Void, String> {
     {
         if(type.equals("signup"))
         {
-<<<<<<< HEAD:app/src/main/java/com/example/ramir/fitnessproject/BackgroundWorker.java
-            String login_url = "http://192.168.0.26/loginUser.php";
-=======
-            String login_url = "http:// /loginUser.php";
->>>>>>> a33a0f001c1cc14ac251a4b79166308c81cfbbd6:app/src/main/java/com/example/ramir/fitnesstracker/BackgroundWorker.java
+            String login_url = "http:///loginUser.php";
             try {
                 URL url = new URL(login_url);
                 HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
@@ -119,11 +115,7 @@ public class BackgroundWorker extends AsyncTask<MyClassParams, Void, String> {
 
         else if(type.equals("doLogin"))
         {
-<<<<<<< HEAD:app/src/main/java/com/example/ramir/fitnessproject/BackgroundWorker.java
-            String login_url = "http://192.168.0.26/login.php";
-=======
-            
->>>>>>> a33a0f001c1cc14ac251a4b79166308c81cfbbd6:app/src/main/java/com/example/ramir/fitnesstracker/BackgroundWorker.java
+            String login_url = "http:///login.php";
             try {
 
                 URL url = new URL(login_url);
@@ -182,11 +174,7 @@ public class BackgroundWorker extends AsyncTask<MyClassParams, Void, String> {
         }
         else if(type.equals("macros"))
         {
-<<<<<<< HEAD:app/src/main/java/com/example/ramir/fitnessproject/BackgroundWorker.java
-            String login_url = "http://192.168.0.26/macros.php";
-=======
-
->>>>>>> a33a0f001c1cc14ac251a4b79166308c81cfbbd6:app/src/main/java/com/example/ramir/fitnesstracker/BackgroundWorker.java
+            String login_url = "http:///macros.php";
             try {
                 URL url = new URL(login_url);
                 HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
