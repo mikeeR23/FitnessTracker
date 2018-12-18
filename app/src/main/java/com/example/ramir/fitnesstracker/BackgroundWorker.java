@@ -43,8 +43,7 @@ public class BackgroundWorker extends AsyncTask<MyClassParams, Void, String> {
     {
         if(type.equals("signup"))
         {
-            System.out.println("INFO " + first + " "  + last);
-            String login_url = "http://192.168.0.26/loginUser.php";
+            String login_url = "http:// /loginUser.php";
             try {
 
                 URL url = new URL(login_url);
@@ -89,7 +88,7 @@ public class BackgroundWorker extends AsyncTask<MyClassParams, Void, String> {
         /*
         else if(type.equals("login"))
         {
-            String login_url = "http://ec2-18-191-190-147.us-east-2.compute.amazonaws.com/loginUser.php";
+            
             try {
                 //String password = params[0].password;
                 //String username = params[0].username;
@@ -151,7 +150,7 @@ public class BackgroundWorker extends AsyncTask<MyClassParams, Void, String> {
 
         else if(type.equals("add_event"))
         {
-            String login_url = "http://ec2-18-191-190-147.us-east-2.compute.amazonaws.com/addEvent.php";
+
             try {
                 URL url = new URL(login_url);
                 HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
