@@ -1,28 +1,16 @@
-package com.example.ramir.fitnesstracker;
+package com.example.ramir.fitnessproject;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class SignupActivity extends AppCompatActivity {
-    private static final HashMap<String, String> usernames_passwords = new HashMap<>();
-    private static final HashMap<String, String> first_last_name = new HashMap<>();
-    private static final HashMap<String, String> user_email = new HashMap<>();
-    private static final ArrayList<String> emails = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
-        Button t = findViewById(R.id.signupButton);
-
     }
 
     public void doSignUp(View v)

@@ -1,4 +1,4 @@
-package com.example.ramir.fitnesstracker;
+package com.example.ramir.fitnessproject;
 
 import org.junit.Test;
 

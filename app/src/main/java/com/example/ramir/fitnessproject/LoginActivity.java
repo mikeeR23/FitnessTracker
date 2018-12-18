@@ -1,4 +1,4 @@
-package com.example.ramir.fitnesstracker;
+package com.example.ramir.fitnessproject;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,13 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class LoginActivity extends AppCompatActivity {
-    private static final ArrayList<String> uu = new ArrayList<>();
-    private static final ArrayList<String> pp = new ArrayList<>();
-    private static HashMap<String, String> up;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,18 +33,11 @@ public class LoginActivity extends AppCompatActivity {
         EditText u = findViewById(R.id.passwordField);
         String password=  u.getText().toString();
 
-        AddData data = new AddData();
-        up = data.getUsernames_passwords();
+        String type = "doLogin";
 
-        System.out.println("PRINTINGTHIS " + up);
-
-        if(up.containsKey(username) && up.containsValue(password))
-        {
-            Intent i = new Intent(getApplication(), Home.class);
-            startActivity(i);
-        }
-        data.getFirst_last_name();
-        data.getUser_email();
+        BackgroundWorker backgroundWorker = new BackgroundWorker(this, type, username, password);
+        MyClassParams params = new MyClassParams(type, username, password);
+        backgroundWorker.execute(params);
 
     }
 }
