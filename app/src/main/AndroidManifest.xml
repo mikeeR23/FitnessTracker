@@ -22,6 +22,7 @@
         <activity android:name=".SignupActivity" />
         <activity android:name=".Home" />
         <activity android:name=".CaloriesActivity" />
+        <activity android:name=".MacrosActivity"></activity>
     </application>
 
 </manifest>

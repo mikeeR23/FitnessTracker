@@ -16,8 +16,8 @@ public class Home extends AppCompatActivity {
     public void onCalories(View v)
     {
 
-       // Intent i = new Intent(getApplicationContext(), MacrosActivity.class);
-        //startActivity(i);
+       Intent i = new Intent(getApplicationContext(), MacrosActivity.class);
+        startActivity(i);
     }
 
     public void onQuickStart(View v)

@@ -13,6 +13,16 @@ function showCreateAccount()
   hideOrShow("createAccount", true)
   hideOrShow("login", false)
   hideOrShow("text", false)
+  hideOrShow("backButton", true)
+}
+
+function goHome()
+{
+  hideOrShow("helloButtons", true)
+  hideOrShow("createAccount", false)
+  hideOrShow("login", true)
+  hideOrShow("text", true)
+  hideOrShow("backButton", false)
 }
 
 function onLogin()

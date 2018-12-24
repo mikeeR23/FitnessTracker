@@ -1,18 +1,20 @@
 body {
     font-family: "Courier New", Courier, sans-serif;
     height: 100%;
-    color:#40343b;
+    color:white;
+    font-weight: bold;
     line-height: 1.8;
     text-align: center;
     font-size: 1.7vw;
 
-    background-image: url('http://hbimg.b0.upaiyun.com/2d9dc08d63f53e2c2df598b6743713290b06f957d358-bDL2ra');
-    height: 100vh;
+    background-image: url('gym1.jpg');
+    /*height: 100vh;*/
 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    z-index: -1;
 }
 
 span{
@@ -49,6 +51,8 @@ input, button {
 
 input {
   border: solid 2px #40343b;
+  border-radius: 20px;
+  padding:5px;
 }
 
 ::placeholder{
@@ -56,9 +60,10 @@ input {
   }
 
 button {
-  color: #40343b;
+  color: white;
   background: rgba(1,1,1,0);
-  border: solid 5px	#40343b;
+  border: 5px solid #FFFAF0;
+  border-radius: 50px;
   margin-top: 5px;
   font-size: 2.8vw;
 }
@@ -83,6 +88,4 @@ textarea:focus, input:focus {
     color: #000000;
 }
 
-.w3-wide {letter-spacing: 10px;}
-.w3-hover-opacity {cursor: pointer;}
 
