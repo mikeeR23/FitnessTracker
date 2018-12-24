@@ -71,8 +71,7 @@ public class BackgroundWorker extends AsyncTask<MyClassParams, Void, String> {
     {
         if(type.equals("signup"))
         {
-
-            String login_url = "http://192.168.0.26/loginUser.php";
+            String login_url = "http:///loginUser.php";
             try {
                 URL url = new URL(login_url);
                 HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
@@ -116,8 +115,7 @@ public class BackgroundWorker extends AsyncTask<MyClassParams, Void, String> {
 
         else if(type.equals("doLogin"))
         {
-            String login_url = "http://192.168.0.26/login.php";
-
+            String login_url = "http:///login.php";
             try {
 
                 URL url = new URL(login_url);
@@ -177,8 +175,7 @@ public class BackgroundWorker extends AsyncTask<MyClassParams, Void, String> {
         }
         else if(type.equals("macros"))
         {
-            String login_url = "http://192.168.0.26/macros.php";
-
+            String login_url = "http:///macros.php";
             try {
                 URL url = new URL(login_url);
                 HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
