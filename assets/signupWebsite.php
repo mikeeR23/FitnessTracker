@@ -1,23 +1,16 @@
 <?php 
 	// This script creates a new user and inserts the data into the database
+	// website script
 	
 	// Gets the json from javascript --website
-	//$data = getRequestInfo();
+	$data = getRequestInfo();
 
 	// Parse the json into variables
-/*
 	$firstName = $data["firstName"];
 	$lastName = $data["lastName"];
 	$user = $data["username"];
 	$pw1 = $data["pw"];
 	$email = $data["email"];
-*/
-
-	$firstName = $_POST["firstName"];
-	$lastName = $_POST["lastName"];
-	$user = $_POST["username"];
-	$pw1 = $_POST["password"];
-	$email = $_POST["email"];
 
 
 	// Mysql info

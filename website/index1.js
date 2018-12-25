@@ -6,6 +6,8 @@ var extension = 'php'
 var firstName = ""
 var lastName = ""
 var userID = 0
+var userInfo = ""
+
 
 function showCreateAccount()
 {
@@ -27,16 +29,17 @@ function goHome()
 
 function onLogin()
 {
+
   // Get the username and password 
   var username = document.getElementById('loginUser').value
   var password = document.getElementById('loginPassword').value
 
   var form = document.getElementById('login')
 
-  var url = urlBase + 'login.' + extension
-
+  //var url = urlBase + 'login.' + extension
+  var url = urlBase + 'loginWebsite.' + extension
   // Create the JSON 
-  var jsonPayload = '{"username" : "' + username + '", "pw": "' + password + '"}'
+  var jsonPayload = '{"username" : "' + username + '", "password": "' + password + '"}'
 
       var xhr = new XMLHttpRequest()
         xhr.open("POST", url, true)
@@ -51,6 +54,8 @@ function onLogin()
             {
               // Get the response from PHP Script
               var res = xhr.responseText
+              userInfo = res;
+              
 
               if(res.includes("Incorrect"))
               {
@@ -59,6 +64,7 @@ function onLogin()
               // Log the user in 
               else
               {
+
                 window.location.href = "homepage.html"
                 return;
               }
@@ -129,7 +135,7 @@ function registerNewUser()
         }
 
         // Create the url 
-        var url =   '/loginUser.' + extension
+        var url =   '/signupWebsite.' + extension
 
         var jsonPayload = '{"firstName" : "' + cleanFirstName + '", "lastName" : "' + cleanLastName + '", "username" : "' + cleanUserName + '", "pw": "' + newPassword + '", "email" : "' + cleanEmail + '"}';
 

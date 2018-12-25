@@ -1,22 +1,10 @@
 <?php 
-	
-	/*
-	// Gets the json from javascript
-	$data = getRequestInfo();
-
-	// Parse the json into variables
-	$user = $data["username"];
-	$pw = $data["pw"];
-	*/
+	// App scrit
 
 	$user = $_POST['username'];
 	$pw = $_POST['password'];
-	/*
-	$firstName = "";
-	$lastName = "";
-	$userID = 0;
-	$email = "";
-*/
+
+
 	// Mysql info
 	$database = 'workoutApp';
 	$server = 'localhost';
@@ -64,33 +52,5 @@
 			
 		// Close the connection
 		$conn->close();
-	}
-
-	// Header for JSON -- used by website
-	function sendResultInfoAsJson( $obj )
-	{
-		header('Content-type: application/json');
-		//echo $obj;
-	}
-
-	// Return info as json
-	function returnWithInfo( $firstName, $lastName )
-	{
-		$retValue = '{"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
-		sendResultInfoAsJson( $retValue );
-	}
-
-	// This function retrieves the json from javascript and should be called in the 
-	// beginning of the script
-	function getRequestInfo()
-	{
-		return json_decode(file_get_contents('php://input'), true);
-	}
-
-	// Sends the error in json format to javascript file
-	function returnWithError( $err )
-	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
-		sendResultInfoAsJson( $retValue );
 	}
  ?>
