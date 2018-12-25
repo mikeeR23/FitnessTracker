@@ -3,15 +3,23 @@
 <head>
 	<title>Fitness Tracker - Home Page</title>
 	<link rel="stylesheet" type="text/css" href="homepage.css">
-	<script type="text/javascript" src="homepage.js"></script>
+	
+	
+	
 </head>
-<body>
+<body onload="getData();">
 	<div id="side-nav">
 		<h1>Fitness App</h1>
-		<h2>Welcome, </h2>
-		<span id="usersName"></span>
+		<h1>Hello, <span id="getUsername"></span><span id="id" style="display:none"></span></h1><br>
+		<p id="macros">Your macros are as follows: </p><br>
+		<p>Total Calories: <span id="calories"></span></p><br>
+		<p>Protein: <span id="protein"></span>g</p><br>
+		<p>Fat: <span id="fat"></span>g</p><br>
+		<p>Carbs: <span id="carbs"></span>g</p><br>
 	</div>
-
-	
+	<div id="whole-page">
+		
+	</div>
+	<script type="text/javascript" src="homepage.js"></script>
 </body>
 </html>

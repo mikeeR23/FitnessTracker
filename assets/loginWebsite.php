@@ -1,5 +1,6 @@
 <?php 
-	// Website login
+	// Start session
+	session_destroy();
 	session_start();
 	
 	// Gets the json from javascript
@@ -14,15 +15,11 @@
 	$lastName = "";
 	$email = "";
 
-	// For Postman testing
-	//$user = $_POST["username"];
-	//$pw = $_POST["password"];
-
 	// Mysql info
 	$database = 'workoutapp';
 	$server = 'localhost';
-	$username = '';
-	$password = '';
+	$username = 'root';
+	$password = 'Dg464569!';
 
 	$conn = new mysqli($server, $username, $password, $database);
 

@@ -18,9 +18,39 @@ div{
 	float:left;
 }
 
+h1:first-child{
+	margin:15px;
+}
+
+h1:last-of-type{
+	margin-left:15px;
+
+}
+
+span:first-child{
+	font-size: 25px;
+}
+
+#macros{
+	width:80%;
+	border-bottom:2px solid black;
+	padding-bottom:5px;
+}
+
+p{
+	margin-left:15px;
+	font-size: 23px;
+
+}
+
+span{
+	font-size: 23px;
+}
+
 #side-nav{
 	width:20%;
 	height: 100vh;
 	color:red;
 	font-weight: bold;
+	background-color: white;
 }

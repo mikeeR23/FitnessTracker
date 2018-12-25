@@ -1,6 +1,8 @@
 <?php 
+	// Website script
 
 	session_start();
+
 	$data = getRequestInfo();
 	
 	// Access the values of the post array inside the session 
