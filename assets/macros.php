@@ -1,6 +1,5 @@
 <?php 
 	// This script enters a users' macros
-	// Only used by the app so far 
 
 	$data = getRequestInfo();
 	$_POST = $data;
