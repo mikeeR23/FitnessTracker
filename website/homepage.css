@@ -14,6 +14,12 @@ body{
     z-index: -1;
 }
 
+#mid{
+
+	width: 80%;
+	height: 100vh;
+}
+
 div{
 	float:left;
 }
@@ -58,6 +64,7 @@ span{
 	position: relative;
 	left:280px;
 	width:40%;
+	background-color: red;
 }
 
 .show{
@@ -134,4 +141,28 @@ h2{
 	color:white;
 	margin-top:10px;
 	margin-left:130px;
+}
+
+#middle
+{
+	background-color: yellow;
+	width: 100%;
+	height: 150px;
+
+}
+
+#middle > p{
+	float: left;
+}
+
+#breakfast{
+	width: 100%;
+	height: 100px;
+	background-color: blue;
+}
+
+#breakfastLabel{
+	width: 100%;
+	height: 30px;
+	background-color: white;
 }

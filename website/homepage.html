@@ -2,12 +2,8 @@
 <html>
 <head>
 	<title>Fitness Tracker - Home Page</title>
-	<link rel="stylesheet" type="text/css" href="homepage.css">
-	
-	
-	
+	<link rel="stylesheet" type="text/css" href="homepage.css">	
 </head>
-<!--load data on page load -->
 <body onload="getData();">
 	<div id="side-nav">
 		<h1>Fitness App</h1>
@@ -19,15 +15,29 @@
 		<p>Carbs: <span id="carbs"></span>g</p><br>
 		<button type="submit" id="updateMacros">Update macros</button>
 	</div>
-	<div id="whole-page" class="hide">
-		<h1>Enter goal macros</h1>
-		<h2>Calories</h2><input type="text" id="caloriesInput" placeholder="Ex. 3000">g<br>
-		<h2>Protein</h2><input type="text" id="proteinInput" placeholder="Ex. 200">g<br>
-		<h2>Fat</h2><input type="text" id="fatInput" placeholder="Ex. 200">g<br>
-		<h2>Carbs</h2><input type="text" id="carbsInput" placeholder="Ex. 200">g<br>
-		<button type="submit" id="enterMacros">Submit</button><br>
-		<span id="messageResult"></span>
+	<div id="mid">
+		<div id="whole-page" class="hide">
+			<h1>Enter goal macros</h1>
+			<h2>Calories</h2><input type="text" id="caloriesInput" placeholder="Ex. 3000">g<br>
+			<h2>Protein</h2><input type="text" id="proteinInput" placeholder="Ex. 200">g<br>
+			<h2>Fat</h2><input type="text" id="fatInput" placeholder="Ex. 200">g<br>
+			<h2>Carbs</h2><input type="text" id="carbsInput" placeholder="Ex. 200">g<br>
+			<button type="submit" id="enterMacros">Submit</button><br>
+			<span id="messageResult">hi my name is michael</span>
+		</div>
+		<div id="middle">
+			<h1>Calories Remaining</h1><br>
+			<h2><span id="displayGoal">3170</span><br>Goal</h2><p> - </p>
+			<h2><span id="displayFood">0</span><br>Food</h2><p> = </p>
+			<h2><span id="displayRemaining"></span><br>Remaining</h2><br>
+		</div>
+		<div id="breakfast">
+			<div id="breakfastLabel">
+				<p>Breakfast</p>
+			</div>
+		</div>
 	</div>
+	
 	<script type="text/javascript" src="homepage.js"></script>
 </body>
 </html>

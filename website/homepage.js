@@ -18,6 +18,9 @@ var carbs = 0
 var macrosButton = document.getElementById('enterMacros')
 var updateMacros = document.getElementById('updateMacros')
 
+var goal = document.getElementById('displayGoal')
+var remaining = document.getElementById('displayRemaining')
+
 function getMacros()
 {
   url = urlBase + 'macrosWebsite.' + extension
@@ -60,6 +63,9 @@ function getMacros()
                 document.getElementById('protein').innerHTML = protein
                 document.getElementById('fat').innerHTML = fat
                 document.getElementById('carbs').innerHTML = carbs
+
+                goal.innerHTML = calories
+                remaining.innerHTML = calories
               }
 
             }
