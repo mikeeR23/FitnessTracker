@@ -17,6 +17,7 @@ var carbs = 0
 // Buttons
 var macrosButton = document.getElementById('enterMacros')
 var updateMacros = document.getElementById('updateMacros')
+var logoutButton = document.getElementById('logout')
 
 var goal = document.getElementById('displayGoal')
 var remaining = document.getElementById('displayRemaining')
@@ -229,4 +230,7 @@ function hideShow()
 // Shows or hides the macros form when clicking the update macros button
 updateMacros.addEventListener("click", function(){
   hideShow()
+})
+logoutButton.addEventListener("click", function(){
+  window.location.href = "index.html"
 })

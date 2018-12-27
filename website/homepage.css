@@ -166,3 +166,13 @@ h2{
 	height: 30px;
 	background-color: white;
 }
+
+#logout{
+	margin-top:15px;
+	margin-left:70px;
+	height: 30px;
+	width: 120px;
+	font-size: 15px;
+	border-radius: 15px;
+
+}
