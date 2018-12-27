@@ -22,9 +22,8 @@ h1:first-child{
 	margin:15px;
 }
 
-h1:last-of-type{
+#hello{
 	margin-left:15px;
-
 }
 
 span:first-child{
@@ -53,4 +52,86 @@ span{
 	color:red;
 	font-weight: bold;
 	background-color: white;
+}
+
+#whole-page{
+	position: relative;
+	left:280px;
+	width:40%;
+}
+
+.show{
+	display: block;
+	visibility: visible;
+}
+
+.hide{
+	display: none;
+	visibility: hidden;
+}
+
+#whole-page h1{
+	text-align: center;
+	color:white;
+	font-weight: bold;
+	font-size: 35px;
+	margin-left:5px;
+
+}
+
+#updateMacros{
+	margin-left:70px;
+	height: 30px;
+	width: 120px;
+	font-size: 15px;
+	border-radius: 15px;
+
+}
+
+input{
+	height:30px;
+	width:250px;
+	position: relative;
+	left: 30px;
+	margin-bottom: 15px;
+	border-radius: 15px;
+	padding:5px;
+}
+
+#proteinInput{
+	margin-left:10px;
+}
+
+#fatInput{
+	margin-left:50px;
+}
+
+#carbsInput{
+	margin-left:20px;
+}
+
+::placeholder{
+	font-size: 20px;
+}
+
+#whole-page > button{
+	height: 50px;
+	width: 150px;
+	margin-left:180px;
+	margin-top:5px;
+	border-radius: 25px;
+}
+
+h2{
+	color:white;
+	margin-left:10px;
+	float:left;
+}
+
+#messageResult{
+	font-weight: bold;
+	font-size:23px;
+	color:white;
+	margin-top:10px;
+	margin-left:130px;
 }

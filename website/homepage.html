@@ -10,15 +10,22 @@
 <body onload="getData();">
 	<div id="side-nav">
 		<h1>Fitness App</h1>
-		<h1>Hello, <span id="getUsername"></span><span id="id" style="display:none"></span></h1><br>
+		<h1 id="hello">Hello, <span id="getUsername"></span><span id="id" style="display:none"></span></h1><br>
 		<p id="macros">Your macros are as follows: </p><br>
 		<p>Total Calories: <span id="calories"></span></p><br>
 		<p>Protein: <span id="protein"></span>g</p><br>
 		<p>Fat: <span id="fat"></span>g</p><br>
 		<p>Carbs: <span id="carbs"></span>g</p><br>
+		<button type="submit" id="updateMacros">Update macros</button>
 	</div>
-	<div id="whole-page">
-		
+	<div id="whole-page" class="hide">
+		<h1>Enter goal macros</h1>
+		<h2>Calories</h2><input type="text" id="caloriesInput" placeholder="Ex. 3000">g<br>
+		<h2>Protein</h2><input type="text" id="proteinInput" placeholder="Ex. 200">g<br>
+		<h2>Fat</h2><input type="text" id="fatInput" placeholder="Ex. 200">g<br>
+		<h2>Carbs</h2><input type="text" id="carbsInput" placeholder="Ex. 200">g<br>
+		<button type="submit" id="enterMacros">Submit</button><br>
+		<span id="messageResult"></span>
 	</div>
 	<script type="text/javascript" src="homepage.js"></script>
 </body>
