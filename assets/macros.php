@@ -14,8 +14,8 @@
 	// Mysql info
 	$database = 'workoutapp';
 	$server = 'localhost';
-	$username = 'root';
-	$password = 'Dg464569!';
+	$username = '';
+	$password = '';
 
 	$conn = new mysqli($server, $username, $password, $database);
 
