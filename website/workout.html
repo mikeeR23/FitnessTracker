@@ -5,6 +5,28 @@
 	<link rel="stylesheet" type="text/css" href="workout.css">
 </head>
 <body>
+	<h1>Start Workout</h1>
+	<div id="quickStartDiv" class="show">
+		<h1>Quick Start</h1>
+		<button type="submit" id="startWorkout">Start an Empty Workout</button>
+	</div>
+	<div id="addWorkout" class="hide">
+		<button id="cancelWorkout">Cancel Workout</button>
+		<h2>Choose a body part</h2>
+		<select name="bodyPart" id="bodyPart">
+			<option value=""></option>
+			<option value="Chest">Chest</option>
+			<option value="Back">Back</option>
+			<option value="Legs">Legs</option>
+			<option value="Triceps">Triceps</option>
+			<option value="Biceps">Biceps</option>
+			<option value="Shoulders">Shoulders</option>
+			<option value="Abs">Abs</option>
+			<option value="Cardio">Cardio</option>
+		</select>
+		<button type="submit" id="getBodyPart">Submit</button>
+	</div>
+	
 
 	<script type="text/javascript" src="workout.js"></script>
 </body>

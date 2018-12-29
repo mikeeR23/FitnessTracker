@@ -19,7 +19,7 @@ var macrosButton = document.getElementById('enterMacros')
 var updateMacros = document.getElementById('updateMacros')
 var logoutButton = document.getElementById('logout')
 var nutritionButton = document.querySelector('#nutritionButton')
-
+var workoutTrackButton = document.querySelector('#workoutTrackerButton')
 
 var goal = document.getElementById('displayGoal')
 var remaining = document.getElementById('displayRemaining')
@@ -240,4 +240,8 @@ logoutButton.addEventListener("click", function(){
 
 nutritionButton.addEventListener("click", function(){
   window.location.href = "nutrition.html"
+})
+
+workoutTrackerButton.addEventListener("click", function(){
+  window.location.href = "workout.html"
 })
