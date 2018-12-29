@@ -18,6 +18,8 @@ var carbs = 0
 var macrosButton = document.getElementById('enterMacros')
 var updateMacros = document.getElementById('updateMacros')
 var logoutButton = document.getElementById('logout')
+var nutritionButton = document.querySelector('#nutritionButton')
+
 
 var goal = document.getElementById('displayGoal')
 var remaining = document.getElementById('displayRemaining')
@@ -231,6 +233,11 @@ function hideShow()
 updateMacros.addEventListener("click", function(){
   hideShow()
 })
+
 logoutButton.addEventListener("click", function(){
   window.location.href = "index.html"
+})
+
+nutritionButton.addEventListener("click", function(){
+  window.location.href = "nutrition.html"
 })

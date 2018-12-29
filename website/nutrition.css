@@ -1,0 +1,82 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+body{
+	background-image: url('gym1.jpg');
+    height: 100vh;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: -1;
+}
+
+#header{
+	width: 100%;
+	height: 60px;
+	background-color:  #666666;
+
+}
+
+#header > button{
+	width: 150px;
+	height: 50px;
+	font-size: 30px;
+	float: left;
+	color: white;
+	margin-top:5px;
+	margin-left:240px;
+	background-color:  #666666;
+	border:none;
+	cursor: pointer;
+}
+
+#center{
+	margin-top:100px;
+	width: 100%;
+	height: 500px;
+	background-color: #666666;
+}
+
+#center > h2{
+	float:left;
+	position: relative;
+	left:800px;
+	margin-right: 150px;
+	text-decoration: underline black;
+}
+
+.middle{
+	width:100%;
+	height: 50px;
+	margin-top:10px;
+}
+
+h1{
+	float:left;
+	margin-top:10px;
+	margin-left:10px;
+}
+
+span{
+	float:left;
+	position: relative;
+	left: 693px;
+	margin-right:165px;
+	margin-top:20px;
+	font-weight: bold;
+	font-size: 25px;
+
+}
+
+
+#totalCarbs{
+	margin-left:18px;
+}
+
+#totalFat{
+	margin-left:54px;
+}
