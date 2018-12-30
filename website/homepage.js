@@ -16,6 +16,8 @@ var counter = 0
 var spanCounter = 0
 
 
+
+
 var calories = 0
 var protein = 0
 var fat = 0
@@ -28,9 +30,13 @@ var logoutButton = document.getElementById('logout')
 var nutritionButton = document.querySelector('#nutritionButton')
 var workoutTrackButton = document.querySelector('#workoutTrackerButton')
 var breakfastButton = document.querySelector('#breakfastButton')
+var lunchButton = document.querySelector('#lunchButton')
+var dinnerButton = document.querySelector('#dinnerButton')
+var snackButton = document.querySelector('#snacksButton')
 
 var goal = document.getElementById('displayGoal')
 var remaining = document.getElementById('displayRemaining')
+var displayFood = document.getElementById('displayFood')
 
 function getMacros()
 {
@@ -220,6 +226,7 @@ macrosButton.addEventListener("click", function(){
   }
 });
 
+
 // Hide or show a div
 function hide_Show(form)
 {
@@ -235,24 +242,40 @@ function hide_Show(form)
   }
 }
 
+function getForm(formElement)
+{
+
+  var form = document.querySelector(formElement)
+  hide_Show(form)
+}
+
 // Shows or hides the macros form when clicking the update macros button
 updateMacros.addEventListener("click", function(){
-  var form = document.getElementById('whole-page')
-
-  hide_Show(form)
+  getForm('#whole-page')
 })
 
 breakfastButton.addEventListener("click", function(){
-  var form = document.querySelector('#enterBreakfast')
-
-   hide_Show(form)
+  getForm('#enterBreakfast')
+ // breakfast()
 })
+
+lunchButton.addEventListener("click", function(){
+  getForm('#enterBreakfast')
+})
+
+dinnerButton.addEventListener("click", function(){
+  getForm('#enterBreakfast')
+})
+
+snackButton.addEventListener("click", function(){
+  getForm('#enterBreakfast')
+})
+
 
 document.querySelector('#cancel').addEventListener("click", function(){
-  var form = document.querySelector('#enterBreakfast')
-
-   hide_Show(form)
+  getForm('#enterBreakfast')
 })
+
 
 logoutButton.addEventListener("click", function(){
   window.location.href = "index.html"
@@ -267,7 +290,8 @@ workoutTrackerButton.addEventListener("click", function(){
 })
 
 // Function to add food to breakfast section
-document.querySelector('#enterFoodBreakfast').addEventListener("click", function(){
+document.getElementById('enterFoodBreakfast').addEventListener("click", function()
+{
 
   // Get the values entered by the user 
   var foodName = document.querySelector('#foodName').value
@@ -276,26 +300,9 @@ document.querySelector('#enterFoodBreakfast').addEventListener("click", function
   var fatFood = document.querySelector('#fatFood').value
   var carbsFood = document.querySelector('#carbsFood').value
 
-  // Clear input fields
-  document.querySelector('#foodName').value = ""
-  document.querySelector('#caloriesFood').value = ""
-  document.querySelector('#proteinFood').value = ""
-  document.querySelector('#fatFood').value = ""
-  document.querySelector('#carbsFood').value = ""
-
-  // Check if any fields are empty and prompt the user to enter data
-  if(foodName == '' || caloriesFood == '' || proteinFood == '' || fatFood == '' || carbsFood == '')
-    return document.getElementById('foodMessage').innerHTML = "Please fill out all fields above"
-
-  // Check if the user has entered a number or not
-  if(isNaN(caloriesFood))
-    return document.getElementById('foodMessage').innerHTML = "Please enter a number or deciman for Calories field"
-  if(isNaN(proteinFood))
-    return document.getElementById('foodMessage').innerHTML = "Please enter a number or decimal for Protein field"
-  if(isNaN(fatFood))
-    return document.getElementById('foodMessage').innerHTML = "Please enter a number or decimal for Fats field"
-  if(isNaN(carbsFood))
-    return document.getElementById('foodMessage').innerHTML = "Please enter a number or decimal for Carbs field"
+  doChecks(foodName, caloriesFood, proteinFood, fatFood,carbsFood,
+    '#foodName', '#caloriesFood', '#proteinFood', '#fatFood', '#carbsFood')
+ 
    
    // Insert a new div right below the breakfast label
   var div = document.createElement('div')
@@ -346,7 +353,54 @@ document.querySelector('#enterFoodBreakfast').addEventListener("click", function
   margin += 30
   var res = margin.toString().concat(px)
   document.querySelector('#breakfastButton').style.marginTop = res
+
 })
+
+
+function doChecks(foodName, caloriesFood, proteinFood, fatFood, carbsFood,
+  foodID, caloriesID, proteinID, fatID, carbsID)
+{
+  // Clear input fields
+  document.querySelector(foodID).value = ""
+  document.querySelector(caloriesID).value = ""
+  document.querySelector(proteinID).value = ""
+  document.querySelector(fatID).value = ""
+  document.querySelector(carbsID).value = ""
+
+   // Check if any fields are empty and prompt the user to enter data
+  if(foodName == '' || caloriesFood == '' || proteinFood == '' || fatFood == '' || carbsFood == '')
+    return document.getElementById('foodMessage').innerHTML = "Please fill out all fields above"
+
+  // Check if the user has entered a number or not
+  if(isNaN(caloriesFood))
+    return document.getElementById('foodMessage').innerHTML = "Please enter a number or decimal for Calories field"
+  if(isNaN(proteinFood))
+    return document.getElementById('foodMessage').innerHTML = "Please enter a number or decimal for Protein field"
+  if(isNaN(fatFood))
+    return document.getElementById('foodMessage').innerHTML = "Please enter a number or decimal for Fats field"
+  if(isNaN(carbsFood))
+    return document.getElementById('foodMessage').innerHTML = "Please enter a number or decimal for Carbs field"
+
+  doFoodCalulations(caloriesFood)
+  return
+}
+
+
+function doFoodCalulations(addCalories)
+{
+  var goal1 = parseInt(displayGoal.textContent)
+  var remaining1 = parseInt(displayRemaining.textContent)
+  var displayFood1 = parseInt(displayFood.textContent)
+  addCalories = parseInt(addCalories)
+
+  displayFood1 += addCalories
+  displayFood.innerHTML = displayFood1
+
+  remaining1 = goal1 - displayFood1
+  displayRemaining.textContent = remaining1
+  return
+
+}
 
 function helper(first, second, third, fourth, fifth, counter, 
   name, calories, protein, fat, carbs)
