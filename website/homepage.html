@@ -25,7 +25,18 @@
 			<h2>Fat</h2><input type="text" id="fatInput" placeholder="Ex. 200">g<br>
 			<h2>Carbs</h2><input type="text" id="carbsInput" placeholder="Ex. 200">g<br>
 			<button type="submit" id="enterMacros">Submit</button><br>
-			<span id="messageResult">hi my name is michael</span>
+			<span id="messageResult"></span>
+		</div>
+		<div id="enterBreakfast" class="hide">
+			<h2>Food Name: </h2>
+			<input type="text" id="foodName" placeholder="Ex. Hotdog"><br>
+			<h2>Calories</h2><input type="text" id="caloriesFood" placeholder="Ex. 2000">g<br>
+			<h2>Protein Amount: </h2><input type="text" id="proteinFood" placeholder="Ex. 200">g<br>
+			<h2>Fat Amount: </h2><input type="text" id="fatFood" placeholder="Ex. 200">g<br>
+			<h2>Carbs Amount: </h2><input type="text" id="carbsFood" placeholder="Ex. 200">g<br>
+			<button type="submit" id="enterFoodBreakfast">Submit</button>
+			<button type="submit" id="cancel">Cancel</button>
+			<span id="foodMessage"></span>
 		</div>
 		<div id="middle">
 			<h1>Calories Remaining</h1><br>
@@ -35,10 +46,14 @@
 		</div>
 
 		<!-- Breakfast -->
-		<div class="headerLabel">
+		<div id="breakfastLabel" class="headerLabel ">
 			<h2>Breakfast</h2>
+			<h3>Calories</h3>
+			<h3>Protein</h3>
+			<h3>Fat</h3>
+			<h3>Carbs</h3>
 		</div>
-		<button type="submit" class="addFood">
+		<button type="submit" id="breakfastButton" class="addFood">
 			<img src="plusSign.jpg" id="plusSign">
 			<p>Add Food</p>
 		</button>	

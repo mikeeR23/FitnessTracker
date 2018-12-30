@@ -5,7 +5,9 @@
 
 body{
 	background-image: url('gym1.jpg');
-    /*height: 100vh;*/
+    height: 0;
+
+
 
     background-position: center;
     background-repeat: no-repeat;
@@ -65,7 +67,7 @@ span{
 	position: relative;
 	left:280px;
 	width:40%;
-	background-color: red;
+	
 }
 
 .show{
@@ -181,8 +183,17 @@ h2{
 	margin-left:130px;
 }
 
+#message{
+	font-weight: bold;
+	font-size:23px;
+	color:white;
+	margin-top:10px;
+	margin-left:130px;
+}
+
 #middle
 {
+	margin-top:20px;
 	background-color: #5B90BF;
 	width: 100%;
 	height: 150px;
@@ -208,11 +219,22 @@ h2{
 	top: 3px;
 }
 
+.headerLabel > h3{
+	float:left;
+	position: relative;
+	left: 180px;
+	top: 6px;
+	margin-right:150px;
+}
 
+.headerLabel > h3:nth-child(4){
+	margin-left:20px;
+}
 
-
-
-
+.headerLabel > h3:nth-child(5)
+{
+	margin-left:25px;
+}
 
 .addFood{
 	width: 100%;
@@ -224,6 +246,17 @@ h2{
 	background-color: white;
 	border:none;
 	cursor: pointer;
+}
+
+.alteredAddFood{
+	width: 100%;
+	height: 50px;
+	padding-top: 5px;
+	padding-right: 900px;
+	background-color: white;
+	border: none;
+	cursor: pointer;
+	margin-top:60px;
 }
 
 #plusSign{
@@ -275,5 +308,105 @@ h2{
 	padding-right:5px;
 	margin-left:100px;
 	cursor: pointer;
+}
+
+#enterBreakfast
+{
+	width: 510px;
+	height: 370px;
+	position: relative;
+	background-color: #666666;
+	left: 290px;
+	top:30px;
+	margin-bottom:30px;
+	padding-top:10px;
+	padding-left:10px;
+	border:2px solid black;
+	border-radius:30px;
+}
+
+#foodName{
+	margin-left:51px;
+	border:none;
+}
+
+#caloriesFood{
+	margin-left:89px;
+	border: none;
+}
+
+#proteinFood{
+	border:none;
+}
+
+#fatFood{
+	margin-left:40px;
+	border:none;
+}
+
+#carbsFood{
+	margin-left:10px;
+	border:none;
+}
+
+#enterFoodBreakfast{
+	width:150px;
+	height: 50px;
+	background-color: black;
+	font-size:15px;
+	font-weight: bold;
+	color:white;
+	border-radius: 75px;
+	border:none;
+	margin-top:10px;
+	margin-left:70px;
+	margin-right:50px;
+	float:left;
+}
+
+#cancel{
+	width:150px;
+	height: 50px;
+	background-color: black;
+	font-size:15px;
+	font-weight: bold;
+	color:white;
+	border-radius: 75px;
+	border:none;
+	margin-top:10px;
+	float:left;
+
+}
+
+#foodMessage{
+	float:left;
+	position: relative;
+	left: 100px;
+	margin-top:10px;
+	font-weight: bold;
+}
+
+.labels{
+	width: 100%;
+	height: 40px;
+	padding-left: 20px;
+	padding-top:3px;
+	float:left;
+	font-size: 20px;
+	font-weight: bold;
+	background-color: white;
+	color:black;
+	border-bottom: 1px solid black;
+}
+
+
+.newSpans{
+	margin-top:5px;
+	margin-right:210px;
+}
+
+.newSpans:first-child{
+	position: relative;
+	left: -10px;
 }
 

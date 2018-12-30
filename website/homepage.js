@@ -8,6 +8,13 @@ var username = ""
 var email = ""
 var temp = ""
 
+var margin = 0
+var px = "px"
+
+var breakfastDivs = "myBreakfastDiv"
+var counter = 0
+var spanCounter = 0
+
 
 var calories = 0
 var protein = 0
@@ -20,6 +27,7 @@ var updateMacros = document.getElementById('updateMacros')
 var logoutButton = document.getElementById('logout')
 var nutritionButton = document.querySelector('#nutritionButton')
 var workoutTrackButton = document.querySelector('#workoutTrackerButton')
+var breakfastButton = document.querySelector('#breakfastButton')
 
 var goal = document.getElementById('displayGoal')
 var remaining = document.getElementById('displayRemaining')
@@ -197,7 +205,7 @@ macrosButton.addEventListener("click", function(){
           document.getElementById('carbs').innerHTML = carbsInput
 
           document.getElementById('messageResult').innerHTML = "Successfully updated macros!"
-          hideShow()
+          //hideShow()
 
           return
         }
@@ -212,11 +220,9 @@ macrosButton.addEventListener("click", function(){
   }
 });
 
-// Hide or show the macros form
-function hideShow()
+// Hide or show a div
+function hide_Show(form)
 {
-  var form = document.getElementById('whole-page')
-
   if(form.classList.contains('show'))
   {
     form.classList.remove('show')
@@ -231,7 +237,21 @@ function hideShow()
 
 // Shows or hides the macros form when clicking the update macros button
 updateMacros.addEventListener("click", function(){
-  hideShow()
+  var form = document.getElementById('whole-page')
+
+  hide_Show(form)
+})
+
+breakfastButton.addEventListener("click", function(){
+  var form = document.querySelector('#enterBreakfast')
+
+   hide_Show(form)
+})
+
+document.querySelector('#cancel').addEventListener("click", function(){
+  var form = document.querySelector('#enterBreakfast')
+
+   hide_Show(form)
 })
 
 logoutButton.addEventListener("click", function(){
@@ -245,3 +265,104 @@ nutritionButton.addEventListener("click", function(){
 workoutTrackerButton.addEventListener("click", function(){
   window.location.href = "workout.html"
 })
+
+// Function to add food to breakfast section
+document.querySelector('#enterFoodBreakfast').addEventListener("click", function(){
+
+  // Get the values entered by the user 
+  var foodName = document.querySelector('#foodName').value
+  var caloriesFood = document.querySelector('#caloriesFood').value
+  var proteinFood = document.querySelector('#proteinFood').value
+  var fatFood = document.querySelector('#fatFood').value
+  var carbsFood = document.querySelector('#carbsFood').value
+
+  // Clear input fields
+  document.querySelector('#foodName').value = ""
+  document.querySelector('#caloriesFood').value = ""
+  document.querySelector('#proteinFood').value = ""
+  document.querySelector('#fatFood').value = ""
+  document.querySelector('#carbsFood').value = ""
+
+  // Check if any fields are empty and prompt the user to enter data
+  if(foodName == '' || caloriesFood == '' || proteinFood == '' || fatFood == '' || carbsFood == '')
+    return document.getElementById('foodMessage').innerHTML = "Please fill out all fields above"
+
+  // Check if the user has entered a number or not
+  if(isNaN(caloriesFood))
+    return document.getElementById('foodMessage').innerHTML = "Please enter a number or deciman for Calories field"
+  if(isNaN(proteinFood))
+    return document.getElementById('foodMessage').innerHTML = "Please enter a number or decimal for Protein field"
+  if(isNaN(fatFood))
+    return document.getElementById('foodMessage').innerHTML = "Please enter a number or decimal for Fats field"
+  if(isNaN(carbsFood))
+    return document.getElementById('foodMessage').innerHTML = "Please enter a number or decimal for Carbs field"
+   
+   // Insert a new div right below the breakfast label
+  var div = document.createElement('div')
+
+  // Give the divs an id to reference them by
+  div.setAttribute("id", breakfastDivs)
+  
+  // This adds a number to the myDiv id giving each
+  // div a unique id. Converts the counter to string
+  breakfastDivs.concat(counter.toString())
+
+  // Add a class to the div
+  div.classList.add('labels')
+
+  // Give the div a parent
+  document.getElementById('breakfastLabel').appendChild(div)
+
+  // Dynamically Create spans 
+  var name = document.createElement('span')
+  var calorieSpan = document.createElement('span')
+  var proteinSpan = document.createElement('span')
+  var fatSpan = document.createElement('span')
+  var carbSpan = document.createElement('span')
+
+  // Give all the newly created spans, unique ids
+  name.setAttribute("id", "name" + spanCounter.toString())
+  calorieSpan.setAttribute("id", "calories" + spanCounter.toString())
+  proteinSpan.setAttribute("id", "protein" + spanCounter.toString())
+  fatSpan.setAttribute("id", "fat" + spanCounter.toString())
+  carbSpan.setAttribute("id", "carbs" + spanCounter.toString())
+
+  name.classList.add('newSpans')
+  calorieSpan.classList.add('newSpans')
+  proteinSpan.classList.add('newSpans')
+  fatSpan.classList.add('newSpans')
+  carbSpan.classList.add('newSpans')
+
+  // Give the spans a parent div
+  helperAppend(div, name, calorieSpan, proteinSpan, fatSpan, carbSpan)
+
+  // Set spans to user data 
+  helper('#name', '#calories', '#protein', '#fat', '#carbs', spanCounter, foodName, caloriesFood, 
+    proteinFood, fatFood, carbsFood)
+
+  spanCounter++;
+
+  // Add 30 to margin-top everytime a food item is added
+  margin += 30
+  var res = margin.toString().concat(px)
+  document.querySelector('#breakfastButton').style.marginTop = res
+})
+
+function helper(first, second, third, fourth, fifth, counter, 
+  name, calories, protein, fat, carbs)
+{
+  document.querySelector(first + counter.toString()).innerHTML = name
+  document.querySelector(second + counter.toString()).innerHTML = calories
+  document.querySelector(third + counter.toString()).innerHTML = protein
+  document.querySelector(fourth + counter.toString()).innerHTML = fat
+  document.querySelector(fifth + counter.toString()).innerHTML = carbs
+}
+
+function helperAppend(div, name, calories, protein, fat, carbs)
+{
+  div.appendChild(name)
+  div.appendChild(calories)
+  div.appendChild(protein)
+  div.appendChild(fat)
+  div.appendChild(carbs)
+}
