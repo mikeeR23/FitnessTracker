@@ -35,6 +35,8 @@ var protein = 0
 var fat = 0
 var carbs = 0
 
+
+
 // Buttons
 var macrosButton = document.getElementById('enterMacros')
 var updateMacros = document.getElementById('updateMacros')
@@ -359,14 +361,29 @@ document.querySelector('#submitFood').addEventListener("click", function()
   var fatFood = document.querySelector('#fatFood').value
   var carbsFood = document.querySelector('#carbsFood').value
 
-  clearInputs('#foodName', '#caloriesFood', '#proteinFood', '#fatFood', '#carbsFood')
-
   // Check for valid entries
-  var message = doChecks(foodName, caloriesFood, proteinFood, fatFood,carbsFood)
-
+  var message = ''
+  message = doChecks(foodName, caloriesFood, proteinFood, fatFood,carbsFood)
+  console.log(message)
   // Check for invalid entry
   if(message.includes('Please'))
+  {
+    if(message.includes('Name'))
+    {
+      document.querySelector('#foodName').classList.add('errorDisplay')
+    }
+    if(message.includes('Calories'))
+      document.querySelector('#caloriesFood').classList.add('errorDisplay')
+    if(message.includes('Protein'))
+      document.querySelector('#proteinFood').classList.add('errorDisplay')
+    if(message.includes('Fats'))
+      document.querySelector('#fatFood').classList.add('errorDisplay')
+    if(message.includes('Carbs'))
+      document.querySelector('#carbsFood').classList.add('errorDisplay')
     return message
+  }
+
+  clearInputs('#foodName', '#caloriesFood', '#proteinFood', '#fatFood', '#carbsFood')
  
    // Insert a new div right below the breakfast label
   var div = document.createElement('div')
@@ -531,9 +548,18 @@ function setSpans(name, calorieSpan, proteinSpan, fatSpan, carbSpan, mealDiv)
 
 function doChecks(foodName, caloriesFood, proteinFood, fatFood, carbsFood)
 {
+  showError()
    // Check if any fields are empty and prompt the user to enter data
-  if(foodName == '' || caloriesFood == '' || proteinFood == '' || fatFood == '' || carbsFood == '')
-    return document.getElementById('foodMessage').innerHTML = "Please fill out all fields above"
+  if(foodName == '')
+    return document.getElementById('foodMessage').innerHTML = "Please fill out Name field above"
+  if(caloriesFood == '')
+    return document.getElementById('foodMessage').innerHTML = "Please fill out Calories field above"
+  if(proteinFood == '')
+    return document.getElementById('foodMessage').innerHTML = "Please fill out Protein field above"
+  if(fatFood == '')
+    return document.getElementById('foodMessage').innerHTML = "Please fill out Fats field above"
+  if(carbsFood == '')
+    return document.getElementById('foodMessage').innerHTML = "Please fill out Carbs field above"
 
   // Check if the user has entered a number or not
   if(isNaN(caloriesFood))
@@ -545,8 +571,9 @@ function doChecks(foodName, caloriesFood, proteinFood, fatFood, carbsFood)
   if(isNaN(carbsFood))
     return document.getElementById('foodMessage').innerHTML = "Please enter a number or decimal for Carbs field"
 
+  
   doFoodCalulations(caloriesFood)
-  return
+  return ""
 }
 
 function clearInputs(foodID, caloriesID, proteinID, fatID, carbsID)
@@ -557,6 +584,28 @@ function clearInputs(foodID, caloriesID, proteinID, fatID, carbsID)
   document.querySelector(proteinID).value = ""
   document.querySelector(fatID).value = ""
   document.querySelector(carbsID).value = ""
+}
+
+function showError()
+{
+  var name = document.querySelector('#foodName')
+  var cal = document.querySelector('#caloriesFood')
+  var pro = document.querySelector('#proteinFood')
+  var fat = document.querySelector('#fatFood')
+  var carbs = document.querySelector('#carbsFood')
+
+  if(name.classList.contains('errorDisplay'))
+    name.classList.add('reverseErrorDisplay')
+  if(cal.classList.contains('errorDisplay'))
+    cal.classList.add('reverseErrorDisplay')
+  if(pro.classList.contains('errorDisplay'))
+    pro.classList.add('reverseErrorDisplay')
+  if(fat.classList.contains('errorDisplay'))
+    fat.classList.add('reverseErrorDisplay')
+  if(carbs.classList.contains('errorDisplay'))
+    carbs.classList.add('reverseErrorDisplay')
+
+  return
 }
 
 // Calculates how many calories have been eaten and how many calories remain

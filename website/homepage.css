@@ -408,4 +408,12 @@ h2{
 	margin-right:0;
 }
 
+.errorDisplay{
+	box-shadow:2px 2px 5px red inset;
+}
+
+.reverseErrorDisplay{
+	box-shadow: none;
+}
+
 
