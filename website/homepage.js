@@ -359,11 +359,14 @@ document.querySelector('#submitFood').addEventListener("click", function()
   var fatFood = document.querySelector('#fatFood').value
   var carbsFood = document.querySelector('#carbsFood').value
 
+  clearInputs('#foodName', '#caloriesFood', '#proteinFood', '#fatFood', '#carbsFood')
+
   // Check for valid entries
-  // TODO - Still needs work; if it's an invalid entry, an error message pops up
-  // but the data is still inserted 
-  doChecks(foodName, caloriesFood, proteinFood, fatFood,carbsFood,
-    '#foodName', '#caloriesFood', '#proteinFood', '#fatFood', '#carbsFood')
+  var message = doChecks(foodName, caloriesFood, proteinFood, fatFood,carbsFood)
+
+  // Check for invalid entry
+  if(message.includes('Please'))
+    return message
  
    // Insert a new div right below the breakfast label
   var div = document.createElement('div')
@@ -526,16 +529,8 @@ function setSpans(name, calorieSpan, proteinSpan, fatSpan, carbSpan, mealDiv)
 }
 
 
-function doChecks(foodName, caloriesFood, proteinFood, fatFood, carbsFood,
-  foodID, caloriesID, proteinID, fatID, carbsID)
+function doChecks(foodName, caloriesFood, proteinFood, fatFood, carbsFood)
 {
-  // Clear input fields
-  document.querySelector(foodID).value = ""
-  document.querySelector(caloriesID).value = ""
-  document.querySelector(proteinID).value = ""
-  document.querySelector(fatID).value = ""
-  document.querySelector(carbsID).value = ""
-
    // Check if any fields are empty and prompt the user to enter data
   if(foodName == '' || caloriesFood == '' || proteinFood == '' || fatFood == '' || carbsFood == '')
     return document.getElementById('foodMessage').innerHTML = "Please fill out all fields above"
@@ -552,6 +547,16 @@ function doChecks(foodName, caloriesFood, proteinFood, fatFood, carbsFood,
 
   doFoodCalulations(caloriesFood)
   return
+}
+
+function clearInputs(foodID, caloriesID, proteinID, fatID, carbsID)
+{
+  // Clear input fields
+  document.querySelector(foodID).value = ""
+  document.querySelector(caloriesID).value = ""
+  document.querySelector(proteinID).value = ""
+  document.querySelector(fatID).value = ""
+  document.querySelector(carbsID).value = ""
 }
 
 // Calculates how many calories have been eaten and how many calories remain
