@@ -8,12 +8,12 @@ var username = ""
 var email = ""
 var temp = ""
 
-var margin = 0
 var px = "px"
 
-//var breakfastDivs = "myBreakfastDiv"
-var counter = 0
-var spanCounter = 0
+var bmargin = 0
+var lmargin = 0
+var dmargin = 0
+var smargin = 0
 
 var bcounter = 0
 var lcounter = 0
@@ -152,8 +152,6 @@ function getData()
   }
 }
 
-
-
 // Update macros
 macrosButton.addEventListener("click", function(){
 
@@ -254,9 +252,9 @@ function hide_Show(form)
   }
 }
 
+// Get the add food form and hide or show it
 function getForm(formElement)
 {
-
   var form = document.querySelector(formElement)
   hide_Show(form)
 }
@@ -267,38 +265,39 @@ updateMacros.addEventListener("click", function(){
 })
 
 breakfastButton.addEventListener("click", function(){
-  getForm('#enterBreakfast')
+  getForm('#displayFoodForm')
   setMeal("myBreakfastDiv")
   setMealLabel('#breakfastLabel')
   setButton('#breakfastButton')
 })
 
 lunchButton.addEventListener("click", function(){
-  getForm('#enterBreakfast')
+  getForm('#displayFoodForm')
   setMeal("myLunchDiv")
   setMealLabel('#lunchLabel')
   setButton('#lunchButton')
 })
 
 dinnerButton.addEventListener("click", function(){
-  getForm('#enterBreakfast')
+  getForm('#displayFoodForm')
   setMeal("myDinnerDiv")
   setMealLabel('#dinnerLabel')
   setButton('#dinnerButton')
 })
 
 snackButton.addEventListener("click", function(){
-  getForm('#enterBreakfast')
+  getForm('#displayFoodForm')
   setMeal("mySnackDiv")
   setMealLabel('#snackLabel')
   setButton('#snacksButton')
 })
 
-
+// Cancel button in add food form
 document.querySelector('#cancel').addEventListener("click", function(){
-  getForm('#enterBreakfast')
+  getForm('#displayFoodForm')
 })
 
+// Getters and setters 
 function setMeal(myMeal)
 {
   this.myMeal = myMeal
@@ -329,23 +328,26 @@ function getButton()
   return btn
 }
 
-
+// Go to index page
 logoutButton.addEventListener("click", function(){
   window.location.href = "index.html"
 })
 
+// Go to nutrition page
 nutritionButton.addEventListener("click", function(){
   window.location.href = "nutrition.html"
 })
 
+// Go to workout page
 workoutTrackerButton.addEventListener("click", function(){
   window.location.href = "workout.html"
 })
 
 // Function to add food to breakfast section
-document.querySelector('#enterFoodBreakfast').addEventListener("click", function()
+document.querySelector('#displayFoodForm').addEventListener("click", function()
 {
 
+// Retrieve Section, divLabel, and the button that was clicked
  var mealDiv =  getMeal()
  var mealLabel = getMealLabel()
  var myButton = getButton()
@@ -357,23 +359,20 @@ document.querySelector('#enterFoodBreakfast').addEventListener("click", function
   var fatFood = document.querySelector('#fatFood').value
   var carbsFood = document.querySelector('#carbsFood').value
 
+  // Check for valid entries
+  // TODO - Still needs work; if it's an invalid entry, an error message pops up
+  // but the data is still inserted 
   doChecks(foodName, caloriesFood, proteinFood, fatFood,carbsFood,
     '#foodName', '#caloriesFood', '#proteinFood', '#fatFood', '#carbsFood')
  
-
- // THIS CAN BE REFACTORED -- TODO 
-/*=======================================================================================*/
    // Insert a new div right below the breakfast label
   var div = document.createElement('div')
 
-  // Give the divs an id to reference them by
-  div.setAttribute("id", mealDiv)
-
-  setDiv(mealDiv)
+  // Give div an id
+  setDiv(mealDiv, div)
 
   // Give the div a parent
   setParents(mealLabel, div)
- // document.querySelector('#breakfastLabel').appendChild(div)
 
   // Add a class to the div
   div.classList.add('labels')
@@ -385,100 +384,145 @@ document.querySelector('#enterFoodBreakfast').addEventListener("click", function
   var fatSpan = document.createElement('span')
   var carbSpan = document.createElement('span')
 
+  // Give spans an id
   setSpans(name, calorieSpan, proteinSpan, fatSpan, carbSpan, mealDiv)
-
-  // Give the spans a parent div
-  helperAppend(div, name, calorieSpan, proteinSpan, fatSpan, carbSpan)
-
+  
+  // Assign those spans a class 
   name.classList.add('newSpans')
   calorieSpan.classList.add('newSpans')
   proteinSpan.classList.add('newSpans')
   fatSpan.classList.add('newSpans')
   carbSpan.classList.add('newSpans')
 
+  // Give the spans a parent div
+  spansParent(div, name, calorieSpan, proteinSpan, fatSpan, carbSpan)
+
   // Set spans to user data 
-  helper('#name', '#calories', '#protein', '#fat', '#carbs', foodName, caloriesFood, 
-    proteinFood, fatFood, carbsFood, mealDiv)
+  displaySpans(foodName, caloriesFood, proteinFood, fatFood, carbsFood, mealDiv)
 
-  // Add 40 to margin-top everytime a food item is added
-  margin += 40
-  var res = margin.toString().concat(px)
-  document.querySelector(myButton).style.marginTop = res
 
+  // Formats the buttons and divs on the page to account for all
+  // the dynamically created elements
+  setMargins(mealDiv, myButton)
 })
 
+// Move the Add Food buttons down everytime a new div is inserted 
+function setMargins(mealDiv, myButton)
+{
+  // Initialize the value to empty string
+  var res = ''
+
+  // Move the breakfast Add Food button down by 40px
+  if(mealDiv == 'myBreakfastDiv')
+  {
+    bmargin += 40
+    res = bmargin.toString().concat(px)
+    document.querySelector(myButton).style.marginTop = res
+  }
+  // Move the lunch Add Food button down by 40px
+  else if(mealDiv == 'myLunchDiv')
+  {
+    lmargin += 40
+    res = lmargin.toString().concat(px)
+    document.querySelector(myButton).style.marginTop = res
+  }
+  // Move the dinner Add Food button down by 40px
+  else if(mealDiv == 'myDinnerDiv')
+  {
+    dmargin += 40
+    res = dmargin.toString().concat(px)
+    document.querySelector(myButton).style.marginTop = res
+  }
+  // Move the snack Add Food button down by 40px
+  else if(mealDiv == 'mySnackDiv')
+  {
+    smargin += 40
+    res = smargin.toString().concat(px)
+    document.querySelector(myButton).style.marginTop = res
+  }
+  else
+    return
+}
+
+// Append the new div to the parent
 function setParents(label, div)
 {
-  if(label == 'breakfastLabel')
-    document.querySelector('#breakfastLabel').appendChild(div)
-  else if(label == 'lunchLabel')
+  if(label == '#breakfastLabel')
+    return document.querySelector('#breakfastLabel').appendChild(div)
+  else if(label == '#lunchLabel')
     document.querySelector('#lunchLabel').appendChild(div)
-  else if(label == 'dinnerLabel')
+  else if(label == '#dinnerLabel')
     document.querySelector('#dinnerLabel').appendChild(div)
-  else if(label == 'snackLabel')
+  else if(label == '#snackLabel')
     document.querySelector('#snackLabel').appendChild(div)
   else return
 }
 
-// div = myBreakfastDiv
-function setDiv(div)
+
+// This function gives the div a specific id based on 
+// which add Food button was clicked
+function setDiv(mealDiv, div)
 {
-  if(div == 'myBreakfastDiv')
+  if(mealDiv == 'myBreakfastDiv')
   {
-    div.concat(bcounter.toString())
+    div.setAttribute("id", mealDiv + bcounter.toString())
+    bcounter++
   }
-  else if(div == 'myLunchDiv')
+  else if(mealDiv == 'myLunchDiv')
   {
-    div.concat(lcounter.toString())
+    div.setAttribute("id", mealDiv + lcounter.toString())
+    lcounter++
   }
-  else if(div == 'myDinnerDiv')
+  else if(mealDiv == 'myDinnerDiv')
   {
-    div.concat(dcounter.toString())
+    div.setAttribute("id", mealDiv + dcounter.toString())
+    dcounter++
   }
-  else if(div == 'mySnackDiv')
+  else if(mealDiv == 'mySnackDiv')
   {
-    div.concat(scounter.toString())
+    div.setAttribute("id", mealDiv + scounter.toString())
+    scounter++
   }
   else
-  {
-    return
-  }
+    ;
 }
 
+// Gives each newly created span a specific id
 function setSpans(name, calorieSpan, proteinSpan, fatSpan, carbSpan, mealDiv)
 {
   if(mealDiv == 'myBreakfastDiv')
   {
-    name.setAttribute("id", "name" + bSpanCounter.toString())
-    calorieSpan.setAttribute("id", "calories" + bSpanCounter.toString())
-    proteinSpan.setAttribute("id", "protein" + bSpanCounter.toString())
-    fatSpan.setAttribute("id", "fat" + bSpanCounter.toString())
-    carbSpan.setAttribute("id", "carbs" + bSpanCounter.toString())
+    name.setAttribute("id", "bname" + bSpanCounter.toString())
+    calorieSpan.setAttribute("id", "bcalories" + bSpanCounter.toString())
+    proteinSpan.setAttribute("id", "bprotein" + bSpanCounter.toString())
+    fatSpan.setAttribute("id", "bfat" + bSpanCounter.toString())
+    carbSpan.setAttribute("id", "bcarbs" + bSpanCounter.toString())
   }
   else if(mealDiv == 'myLunchDiv')
   {
-    name.setAttribute("id", "name" + lSpanCounter.toString())
-    calorieSpan.setAttribute("id", "calories" + lSpanCounter.toString())
-    proteinSpan.setAttribute("id", "protein" + lSpanCounter.toString())
-    fatSpan.setAttribute("id", "fat" + lSpanCounter.toString())
-    carbSpan.setAttribute("id", "carbs" + lSpanCounter.toString())
+    name.setAttribute("id", "lname" + lSpanCounter.toString())
+    calorieSpan.setAttribute("id", "lcalories" + lSpanCounter.toString())
+    proteinSpan.setAttribute("id", "lprotein" + lSpanCounter.toString())
+    fatSpan.setAttribute("id", "lfat" + lSpanCounter.toString())
+    carbSpan.setAttribute("id", "lcarbs" + lSpanCounter.toString())
   }
   else if(mealDiv == 'myDinnerDiv')
   {
-    name.setAttribute("id", "name" + dSpanCounter.toString())
-    calorieSpan.setAttribute("id", "calories" + dSpanCounter.toString())
-    proteinSpan.setAttribute("id", "protein" + dSpanCounter.toString())
-    fatSpan.setAttribute("id", "fat" + dSpanCounter.toString())
-    carbSpan.setAttribute("id", "carbs" + dSpanCounter.toString())
+    name.setAttribute("id", "dname" + dSpanCounter.toString())
+    calorieSpan.setAttribute("id", "dcalories" + dSpanCounter.toString())
+    proteinSpan.setAttribute("id", "dprotein" + dSpanCounter.toString())
+    fatSpan.setAttribute("id", "dfat" + dSpanCounter.toString())
+    carbSpan.setAttribute("id", "dcarbs" + dSpanCounter.toString())
   }
   else if(mealDiv == 'mySnackDiv')
   {
-    name.setAttribute("id", "name" + sSpanCounter.toString())
-    calorieSpan.setAttribute("id", "calories" + sSpanCounter.toString())
-    proteinSpan.setAttribute("id", "protein" + sSpanCounter.toString())
-    fatSpan.setAttribute("id", "fat" + sSpanCounter.toString())
-    carbSpan.setAttribute("id", "carbs" + sSpanCounter.toString())
+    name.setAttribute("id", "sname" + sSpanCounter.toString())
+    calorieSpan.setAttribute("id", "scalories" + sSpanCounter.toString())
+    proteinSpan.setAttribute("id", "sprotein" + sSpanCounter.toString())
+    fatSpan.setAttribute("id", "sfat" + sSpanCounter.toString())
+    carbSpan.setAttribute("id", "scarbs" + sSpanCounter.toString())
   }
+  
 }
 
 
@@ -510,7 +554,8 @@ function doChecks(foodName, caloriesFood, proteinFood, fatFood, carbsFood,
   return
 }
 
-
+// Calculates how many calories have been eaten and how many calories remain
+// everytime the user adds food, this is updated
 function doFoodCalulations(addCalories)
 {
   var goal1 = parseInt(displayGoal.textContent)
@@ -527,49 +572,51 @@ function doFoodCalulations(addCalories)
 
 }
 
-function helper(first, second, third, fourth, fifth, 
-  name, calories, protein, fat, carbs ,mealDiv)
+// Display all the data entered on to the website
+function displaySpans(name, calories, protein, fat, carbs ,mealDiv)
 {
+  
   if(mealDiv == 'myBreakfastDiv')
   {
-    document.querySelector(first + bSpanCounter.toString()).innerHTML = name
-    document.querySelector(second + bSpanCounter.toString()).innerHTML = calories
-    document.querySelector(third + bSpanCounter.toString()).innerHTML = protein
-    document.querySelector(fourth + bSpanCounter.toString()).innerHTML = fat
-    document.querySelector(fifth + bSpanCounter.toString()).innerHTML = carbs
+    document.querySelector('#bname' + bSpanCounter.toString()).innerHTML = name
+    document.querySelector('#bcalories' + bSpanCounter.toString()).innerHTML = calories
+    document.querySelector('#bprotein' + bSpanCounter.toString()).innerHTML = protein
+    document.querySelector('#bfat' + bSpanCounter.toString()).innerHTML = fat
+    document.querySelector('#bcarbs' + bSpanCounter.toString()).innerHTML = carbs
     bSpanCounter++
   }
   else if(mealDiv == 'myLunchDiv')
   {
-    document.querySelector(first + lSpanCounter.toString()).innerHTML = name
-    document.querySelector(second + lSpanCounter.toString()).innerHTML = calories
-    document.querySelector(third + lSpanCounter.toString()).innerHTML = protein
-    document.querySelector(fourth + lSpanCounter.toString()).innerHTML = fat
-    document.querySelector(fifth + lSpanCounter.toString()).innerHTML = carbs
+    document.querySelector('#lname' + lSpanCounter.toString()).innerHTML = name
+    document.querySelector('#lcalories' + lSpanCounter.toString()).innerHTML = calories
+    document.querySelector('#lprotein' + lSpanCounter.toString()).innerHTML = protein
+    document.querySelector('#lfat' + lSpanCounter.toString()).innerHTML = fat
+    document.querySelector('#lcarbs' + lSpanCounter.toString()).innerHTML = carbs
     lSpanCounter++
   }
    else if(mealDiv == 'myDinnerDiv')
   {
-    document.querySelector(first + dSpanCounter.toString()).innerHTML = name
-    document.querySelector(second + dSpanCounter.toString()).innerHTML = calories
-    document.querySelector(third + dSpanCounter.toString()).innerHTML = protein
-    document.querySelector(fourth + dSpanCounter.toString()).innerHTML = fat
-    document.querySelector(fifth + dSpanCounter.toString()).innerHTML = carbs
+    document.querySelector('#dname' + dSpanCounter.toString()).innerHTML = name
+    document.querySelector('#dcalories' + dSpanCounter.toString()).innerHTML = calories
+    document.querySelector('#dprotein' + dSpanCounter.toString()).innerHTML = protein
+    document.querySelector('#dfat' + dSpanCounter.toString()).innerHTML = fat
+    document.querySelector('#dcarbs' + dSpanCounter.toString()).innerHTML = carbs
     dSpanCounter++
   }
    else if(mealDiv == 'mySnackDiv')
   {
-    document.querySelector(first + sSpanCounter.toString()).innerHTML = name
-    document.querySelector(second + sSpanCounter.toString()).innerHTML = calories
-    document.querySelector(third + sSpanCounter.toString()).innerHTML = protein
-    document.querySelector(fourth + sSpanCounter.toString()).innerHTML = fat
-    document.querySelector(fifth + sSpanCounter.toString()).innerHTML = carbs
+    document.querySelector('#sname' + sSpanCounter.toString()).innerHTML = name
+    document.querySelector('#scalories' + sSpanCounter.toString()).innerHTML = calories
+    document.querySelector('#sprotein' + sSpanCounter.toString()).innerHTML = protein
+    document.querySelector('#sfat' + sSpanCounter.toString()).innerHTML = fat
+    document.querySelector('#scarbs' + sSpanCounter.toString()).innerHTML = carbs
     sSpanCounter++
   }
   
 }
 
-function helperAppend(div, name, calories, protein, fat, carbs)
+// Give spans a parent
+function spansParent(div, name, calories, protein, fat, carbs)
 {
   div.appendChild(name)
   div.appendChild(calories)
