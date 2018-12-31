@@ -308,7 +308,7 @@ h2{
 	cursor: pointer;
 }
 
-#enterBreakfast
+#displayFoodForm
 {
 	width: 510px;
 	height: 370px;
@@ -347,7 +347,7 @@ h2{
 	border:none;
 }
 
-#displayFoodForm{
+#submitFood{
 	width:150px;
 	height: 50px;
 	background-color: black;
@@ -391,7 +391,7 @@ h2{
 	float:left;
 	font-size: 20px;
 	font-weight: bold;
-	background-color: blue;
+	background-color: white;
 	color:black;
 	border-bottom: 1px solid black;
 }
@@ -399,7 +399,6 @@ h2{
 
 .newSpans{
 	margin-right:210px;
-	background-color: red;
 	position: relative;
 	top:5px;
 	margin-left:5px;

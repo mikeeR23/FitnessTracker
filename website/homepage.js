@@ -344,7 +344,7 @@ workoutTrackerButton.addEventListener("click", function(){
 })
 
 // Function to add food to breakfast section
-document.querySelector('#displayFoodForm').addEventListener("click", function()
+document.querySelector('#submitFood').addEventListener("click", function()
 {
 
 // Retrieve Section, divLabel, and the button that was clicked
