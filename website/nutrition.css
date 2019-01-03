@@ -38,21 +38,21 @@ body{
 	margin-top:100px;
 	width: 100%;
 	height: 500px;
-	background-color: #666666;
+	background-color: white;
 }
 
 #center > h2{
 	float:left;
 	position: relative;
 	left:800px;
-	margin-right: 150px;
+	margin-right: 140px;
 	text-decoration: underline black;
 }
 
 .middle{
 	width:100%;
 	height: 50px;
-	margin-top:10px;
+	border-bottom:2px solid black;
 }
 
 h1{
@@ -64,7 +64,7 @@ h1{
 span{
 	float:left;
 	position: relative;
-	left: 693px;
+	left: 710px;
 	margin-right:165px;
 	margin-top:20px;
 	font-weight: bold;
@@ -80,3 +80,9 @@ span{
 #totalFat{
 	margin-left:54px;
 }
+
+#center > h2:nth-child(2)
+{
+	margin-right:157px;
+}
+

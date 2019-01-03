@@ -52,6 +52,15 @@ var goal = document.getElementById('displayGoal')
 var remaining = document.getElementById('displayRemaining')
 var displayFood = document.getElementById('displayFood')
 
+var displayProtein = document.querySelector('#displayProteinActual')
+var displayRemainingProtein = document.querySelector('#displayRemainingProtein')
+
+var displayFat = document.querySelector('#displayFatActual')
+var displayRemainingFat = document.querySelector('#displayRemainingFat')
+
+var displayCarbs = document.querySelector('#displayCarbsActual')
+var displayRemainingCarbs = document.querySelector('#displayRemainingCarbs')
+
 function getMacros()
 {
   url = urlBase + 'macrosWebsite.' + extension
@@ -155,8 +164,8 @@ function getData()
 }
 
 // Update macros
-macrosButton.addEventListener("click", function(){
 
+macrosButton.addEventListener("click", function(){
   // Get the value the user has entered into input fields
   var calorieInput = document.getElementById('caloriesInput').value
   var proteinInput = document.getElementById('proteinInput').value
@@ -239,6 +248,7 @@ macrosButton.addEventListener("click", function(){
 });
 
 
+
 // Hide or show a div
 function hide_Show(form)
 {
@@ -295,8 +305,12 @@ snackButton.addEventListener("click", function(){
 })
 
 // Cancel button in add food form
-document.querySelector('#cancel').addEventListener("click", function(){
+document.querySelector('#cancel2').addEventListener("click", function(){
   getForm('#displayFoodForm')
+})
+
+document.querySelector('#cancel1').addEventListener("click", function(){
+  getForm('#whole-page')
 })
 
 // Getters and setters 
@@ -330,6 +344,23 @@ function getButton()
   return btn
 }
 
+function getProtein()
+{
+  return displayProtein
+}
+
+function getFat()
+{
+  return displayFat
+}
+
+function getCarbs()
+{
+  return displayCarbs
+}
+
+
+
 // Go to index page
 logoutButton.addEventListener("click", function(){
   window.location.href = "index.html"
@@ -337,6 +368,36 @@ logoutButton.addEventListener("click", function(){
 
 // Go to nutrition page
 nutritionButton.addEventListener("click", function(){
+  console.log("in nutrition")
+  var url = urlBase + 'currentMacros.' + extension
+
+  var jsonPayload = '{"currentProtein" : "' +  displayProtein.textContent  + '", "currentFat" : "' + displayFat.textContent + '", "currentCarbs" :"' + displayCarbs.textContent + '"}'
+
+  console.log("My payload: " + jsonPayload)
+  var xhr = new XMLHttpRequest()
+  xhr.open("POST", url, true)
+  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8")
+  try
+  {
+    xhr.send(jsonPayload);
+    xhr.onreadystatechange = function()
+    {
+      if(this.readyState == 4 && this.status == 200)
+      {
+        // Get the response from PHP Script
+        var res = xhr.responseText
+       // console.log("the res" + res)
+        
+        // Parse the json received from php
+        var jsonObject = JSON.parse(res)
+      }
+    }
+  }
+  catch(err)
+  {
+    console.log("error")
+    //document.getElementById('getUsername').innerHTML = err
+  }
   window.location.href = "nutrition.html"
 })
 
@@ -424,7 +485,27 @@ document.querySelector('#submitFood').addEventListener("click", function()
   // Formats the buttons and divs on the page to account for all
   // the dynamically created elements
   setMargins(mealDiv, myButton)
+
+  foodStuff(proteinFood, fatFood, carbsFood)
 })
+
+function foodStuff(proteinFood, fatFood, carbsFood)
+{
+  // Update protein after each insertion
+  var addProtein = parseInt(displayProtein.textContent)
+  addProtein += parseInt(proteinFood)
+  displayProtein.textContent = addProtein
+
+  // Update fat after each insertion
+  var addFat = parseInt(displayFat.textContent)
+  addFat += parseInt(fatFood)
+  displayFat.textContent = addFat
+
+  // Update carbs after each insertion
+  var addCarbs = parseInt(displayCarbs.textContent)
+  addCarbs += parseInt(carbsFood)
+  displayCarbs.textContent = addCarbs
+}
 
 // Move the Add Food buttons down everytime a new div is inserted 
 function setMargins(mealDiv, myButton)

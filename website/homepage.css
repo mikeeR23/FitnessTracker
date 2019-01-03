@@ -163,11 +163,22 @@ input{
 #whole-page > button{
 	height: 50px;
 	width: 150px;
-	margin-left:180px;
+	margin-right:20px;
 	margin-top:5px;
 	border-radius: 25px;
 	cursor: pointer;
 }
+
+#enterMacros{
+	margin-left:20px;
+	background-color:black;
+	color:white;
+	font-weight: bold;
+	border:none;
+	float:left;
+	margin-left:40px;
+}
+
 
 h2{
 	color:white;
@@ -362,7 +373,7 @@ h2{
 	float:left;
 }
 
-#cancel{
+.cancel{
 	width:150px;
 	height: 50px;
 	background-color: black;

@@ -24,7 +24,8 @@
 			<h2>Protein</h2><input type="text" id="proteinInput" placeholder="Ex. 200">g<br>
 			<h2>Fat</h2><input type="text" id="fatInput" placeholder="Ex. 200">g<br>
 			<h2>Carbs</h2><input type="text" id="carbsInput" placeholder="Ex. 200">g<br>
-			<button type="submit" id="enterMacros">Submit</button><br>
+			<button type="submit" id="enterMacros">Submit</button>
+			<button type="submit" id="cancel1" class="cancel">Cancel</button>
 			<span id="messageResult"></span>
 		</div>
 		<div id="displayFoodForm" class="hide">
@@ -36,7 +37,7 @@
 			<h2>Carbs Amount: </h2><input type="text" id="carbsFood" placeholder="Ex. 200">g<br>
 			<button type="submit" id="submitFood">Submit</button>
 			<!-- enterFoodBreakfast --> 
-			<button type="submit" id="cancel">Cancel</button>
+			<button type="submit" id="cancel2" class="cancel">Cancel</button>
 			<span id="foodMessage"></span>
 		</div>
 		<div id="middle">
@@ -44,6 +45,12 @@
 			<h2><span id="displayGoal"></span><br>Goal</h2><p> - </p>
 			<h2><span id="displayFood">0</span><br>Food</h2><p> = </p>
 			<h2><span id="displayRemaining"></span><br>Remaining</h2><br>
+			<h2 class="hide"><span id="displayProteinActual" class="hide">0</span><br>Protein</h2>
+			<h2 class="hide"><span id="displayRemainingProtein" class="hide">1</span><br>PRoteinRemaining</h2>
+			<h2 class="hide"><span id="displayFatActual" class="hide">0</span><br>Fat</h2>
+			<h2 class="hide"><span id="displayRemainingFat" class="hide">1</span><br>FatRemaining</h2>
+			<h2 class="hide"><span id="displayCarbsActual" class="hide">0</span><br>Carbs</h2>
+			<h2 class="hide"><span id="displayRemainingCarbs" class="hide">1</span><br>Carbs Remaining</h2>
 		</div>
 
 		<!-- Breakfast -->
