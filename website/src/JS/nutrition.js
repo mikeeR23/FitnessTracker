@@ -1,4 +1,4 @@
-var urlBase = ''
+var urlBase = '../assets/'
 var extension = 'php'
 var temp = ""
 
@@ -107,3 +107,7 @@ function calculateRemaining()
   document.querySelector('#leftCarbs').textContent = carbsGoal - displayCarbs
   
 }
+
+document.querySelector('#macrosButton').addEventListener("click", function(){
+  window.location.href = "macros.html"
+})

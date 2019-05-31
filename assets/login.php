@@ -8,8 +8,8 @@
 	// Mysql info
 	$database = 'workoutApp';
 	$server = 'localhost';
-	$username = '';
-	$password = '';
+	$username = 'root';
+	$password = 'Dg464569!';
 
 	$conn = new mysqli($server, $username, $password, $database);
 

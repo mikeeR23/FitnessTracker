@@ -1,4 +1,6 @@
-var urlBase = ''
+AOS.init()
+
+var urlBase = '../assets/'
 var extension = 'php'
 
 var firstName = ""
@@ -363,7 +365,7 @@ function getCarbs()
 
 // Go to index page
 logoutButton.addEventListener("click", function(){
-  window.location.href = "index.html"
+  window.location.href = "/index.html"
 })
 
 // Go to nutrition page
@@ -398,12 +400,12 @@ nutritionButton.addEventListener("click", function(){
     console.log("error")
     //document.getElementById('getUsername').innerHTML = err
   }
-  window.location.href = "nutrition.html"
+  window.location.href = "../HTML/nutrition.html"
 })
 
 // Go to workout page
 workoutTrackerButton.addEventListener("click", function(){
-  window.location.href = "workout.html"
+  window.location.href = "../HTML/workout.html"
 })
 
 // Function to add food to breakfast section
@@ -758,4 +760,20 @@ function spansParent(div, name, calories, protein, fat, carbs)
   div.appendChild(protein)
   div.appendChild(fat)
   div.appendChild(carbs)
+}
+
+document.querySelector('#updateGoals').addEventListener("click", function(){
+  getForm("#goalsForm")
+  var goals = document.querySelector('#goalsForm')
+  document.getElementsByClassName("close")[0].style.display="block"
+  goals.style.display="block"
+})
+
+function closeModal()
+{
+  var span = document.getElementsByClassName("close")[0]
+  var form = document.getElementsByClassName("displayModal")[0]
+
+  span.style.display="none"
+  form.style.display="none"
 }

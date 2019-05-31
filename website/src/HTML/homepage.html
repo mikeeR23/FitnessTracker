@@ -2,7 +2,10 @@
 <html>
 <head>
 	<title>Fitness Tracker - Home Page</title>
-	<link rel="stylesheet" type="text/css" href="homepage.css">	
+	<link rel="stylesheet" type="text/css" href="../CSS/homepage.css">	
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 </head>
 <body onload="getData();">
 	<div id="side-nav">
@@ -13,14 +16,16 @@
 		<p>Protein: <span id="protein"></span>g</p><br>
 		<p>Fat: <span id="fat"></span>g</p><br>
 		<p>Carbs: <span id="carbs"></span>g</p><br>
-		<button type="submit" id="updateMacros">Update macros</button><br>
-		<button type="submit" id="workoutTrackerButton">Track Workout</button>
-		<button type="submit" id="logout">Logout</button>
+		<button type="submit"  id="updateMacros" class="sideNavButtons sideNavHovers">Update macros</button><br>
+		<button type="submit"  id="workoutTrackerButton" class="sideNavButtons sideNavHovers">Track Workout</button>
+		<button type="submit"  id="updateGoals" class="sideNavButtons sideNavHovers">Set/Update Goals</button>
+		<button type="submit" class="sideNavButtons sideNavHovers"></button>
+		<button type="submit"  id="logout" class="sideNavButtons sideNavHovers">Logout</button>
 	</div>
 	<div id="mid">
 		<div id="whole-page" class="hide">
 			<h1>Enter goal macros</h1>
-			<h2>Calories</h2><input type="text" id="caloriesInput" placeholder="Ex. 3000">g<br>
+			<h2>Calories</h2><input type="text" id="caloriesInput"  placeholder="Ex. 3000">g<br>
 			<h2>Protein</h2><input type="text" id="proteinInput" placeholder="Ex. 200">g<br>
 			<h2>Fat</h2><input type="text" id="fatInput" placeholder="Ex. 200">g<br>
 			<h2>Carbs</h2><input type="text" id="carbsInput" placeholder="Ex. 200">g<br>
@@ -28,7 +33,7 @@
 			<button type="submit" id="cancel1" class="cancel">Cancel</button>
 			<span id="messageResult"></span>
 		</div>
-		<div id="displayFoodForm" class="hide">
+		<div id="displayFoodForm" class="hide displayFoodForm">
 			<h2>Food Name: </h2>
 			<input type="text" id="foodName" placeholder="Ex. Hotdog"><br>
 			<h2>Calories</h2><input type="text" id="caloriesFood" placeholder="Ex. 2000">g<br>
@@ -39,6 +44,13 @@
 			<!-- enterFoodBreakfast --> 
 			<button type="submit" id="cancel2" class="cancel">Cancel</button>
 			<span id="foodMessage"></span>
+		</div>
+		<div id="goalsForm" class="displayModal" >
+			<h2>Choose a goal</h2><br>
+			<button class="modalButtons">Gain Weight</button>
+			<button class="modalButtons">Lost Weight</button>
+			<button class="modalButtons">Maintain Weight</button>
+			<span class="close" onclick="closeModal();">&times;</span>
 		</div>
 		<div id="middle">
 			<h1>Calories Remaining</h1><br>
@@ -54,15 +66,15 @@
 		</div>
 
 		<!-- Breakfast -->
-		<div id="breakfastLabel" class="headerLabel ">
+		<div id="breakfastLabel" class="headerLabel " >
 			<h2>Breakfast</h2>
 			<h3>Calories</h3>
 			<h3>Protein</h3>
 			<h3>Fat</h3>
 			<h3>Carbs</h3>
 		</div>
-		<button type="submit" id="breakfastButton" class="addFood">
-			<img src="plusSign.jpg" id="plusSign">
+		<button type="submit" id="breakfastButton" class="addFood" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+			<img src="../images/plusSign.jpg" id="plusSign">
 			<p>Add Food</p>
 		</button>	
 
@@ -70,8 +82,8 @@
 		<div id="lunchLabel" class="headerLabel">
 			<h2>Lunch</h2>
 		</div>
-		<button type="submit" class="addFood" id="lunchButton">
-			<img src="plusSign.jpg" id="plusSign">
+		<button type="submit" class="addFood" id="lunchButton" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+			<img src="../images/plusSign.jpg" id="plusSign">
 			<p>Add Food</p>
 		</button>
 
@@ -79,8 +91,8 @@
 		<div id="dinnerLabel" class="headerLabel">
 			<h2>Dinner</h2>
 		</div>
-		<button type="submit" class="addFood" id="dinnerButton">
-			<img src="plusSign.jpg" id="plusSign">
+		<button type="submit" class="addFood" id="dinnerButton" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+			<img src="../images/plusSign.jpg" id="plusSign">
 			<p>Add Food</p>
 		</button>
 
@@ -88,8 +100,8 @@
 		<div id="snackLabel" class="headerLabel">
 			<h2>Snacks</h2>
 		</div>
-		<button type="submit" class="addFood" id="snacksButton">
-			<img src="plusSign.jpg" id="plusSign">
+		<button type="submit" class="addFood" id="snacksButton" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+			<img src="../images/plusSign.jpg" id="plusSign">
 			<p>Add Food</p>
 		</button>
 
@@ -97,8 +109,8 @@
 		<div class="headerLabel">
 			<h2>Exercise</h2>
 		</div>
-		<button type="submit" class="addFood" id="exerciseButton">
-			<img src="plusSign.jpg" id="plusSign">
+		<button type="submit" class="addFood" id="exerciseButton" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+			<img src="../images/plusSign.jpg" id="plusSign">
 			<p>Add Exercise</p>
 		</button>
 
@@ -106,24 +118,24 @@
 		<div class="headerLabel">
 			<h2>Water</h2>
 		</div>
-		<button type="submit" class="addFood" id="waterButton">
-			<img src="plusSign.jpg" id="plusSign">
+		<button type="submit" class="addFood" id="waterButton" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+			<img src="../images/plusSign.jpg" id="plusSign">
 			<p>Add Water</p>
 		</button>
 
 		<!-- Nutrition button -->
-		<button type="submit" id="nutritionButton">
-			<img src="pieChart.png" id="pieChart">
+		<button type="submit" id="nutritionButton" >
+			<img src="../images/pieChart.png" id="pieChart">
 			<p>Nutrition</p>
 		</button>
 
 		<!-- Notes -->
 		<button type="submit" id="notesButton">
-			<img src="notes.png" id="notes">
+			<img src="../images/notes.png" id="notes">
 			<p>Notes</p>
 		</button>
 	</div>
 
-	<script type="text/javascript" src="homepage.js"></script>
+	<script type="text/javascript" src="../JS/homepage.js"></script>
 </body>
 </html>

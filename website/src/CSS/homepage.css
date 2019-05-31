@@ -4,7 +4,7 @@
 }
 
 body{
-	background-image: url('gym1.jpg');
+	background-image: url('../images/gym1.jpg');
     height: 0;
 
 
@@ -89,7 +89,7 @@ span{
 
 }
 
-#updateMacros{
+.sideNavButtons{
 	height: 70px;
 	width: 100%;
 	font-size: 25px;
@@ -99,37 +99,7 @@ span{
 	font-weight: bold;
 }
 
-#updateMacros:hover{
-	border-bottom: 2px solid black;
-	color: white;
-}
-
-#workoutTrackerButton{
-	height: 70px;
-	width: 100%;
-	font-size: 25px;
-	background-color: #666666;
-	border:none;
-	cursor: pointer;
-	font-weight: bold;
-}
-
-#workoutTrackerButton:hover{
-	border-bottom: 2px solid black;
-	color: white;
-}
-
-#logout{
-	height: 70px;
-	width: 100%;
-	font-size: 25px;
-	background-color: #666666;
-	border:none;
-	cursor: pointer;
-	font-weight: bold;
-}
-
-#logout:hover{
+.sideNavHovers:hover{
 	border-bottom: 2px solid black;
 	color: white;
 }
@@ -319,7 +289,8 @@ h2{
 	cursor: pointer;
 }
 
-#displayFoodForm
+/*#displayFoodForm*/
+.displayFoodForm
 {
 	width: 510px;
 	height: 370px;
@@ -334,6 +305,11 @@ h2{
 	border-radius:30px;
 }
 
+input:focus{
+	outline:none;
+	box-shadow: 5px 2px 2px green;
+}
+
 #foodName{
 	margin-left:51px;
 	border:none;
@@ -343,6 +319,7 @@ h2{
 	margin-left:89px;
 	border: none;
 }
+
 
 #proteinFood{
 	border:none;
@@ -371,6 +348,7 @@ h2{
 	margin-left:70px;
 	margin-right:50px;
 	float:left;
+	cursor:pointer;
 }
 
 .cancel{
@@ -384,7 +362,7 @@ h2{
 	border:none;
 	margin-top:10px;
 	float:left;
-
+	cursor:pointer;
 }
 
 #foodMessage{
@@ -427,4 +405,44 @@ h2{
 	box-shadow: none;
 }
 
+.displayModal{
+	display:none;
+	position:fixed;
+	margin-left: 220px;
+	margin-top:200px;
+	z-index:1;
+	width:50%;
+	height:20%;
+	background-color:rgb(129, 116, 116);
+	border-radius:20px;
+	opacity: .95;
+}
+
+.close {
+	color: white;
+	float: right;
+	font-size: 35px;
+	font-weight: bold;
+	margin-top:45px;
+	margin-right:30px;
+  }
+
+.close:hover,
+.close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+  }
+
+.modalButtons{
+	width:100px;
+	height:50px;
+	background-color:rgb(40, 148, 40);
+	font-weight:bold;
+	color:white;
+	border-radius:20px;
+	border:none;
+	margin-top:20px;
+	margin-left:20px;
+}
 

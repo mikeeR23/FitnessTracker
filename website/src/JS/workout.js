@@ -7,12 +7,14 @@ var quickStart = document.querySelector('#startWorkout')
 var cancelWorkout = document.querySelector('#cancelWorkout')
 var bodyPartButton = document.querySelector('#getBodyPart')
 
+var bodyPart = ''
+
 
 bodyPartButton.addEventListener("click", function(){
-	var bodyPart = document.querySelector('#bodyPart').value
+	bodyPart = document.querySelector('#bodyPart').value
 
-	
 })
+
 
 quickStart.addEventListener("click", function(){
 	hideOrShow("quickStartDiv", false)

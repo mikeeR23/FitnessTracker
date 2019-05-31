@@ -1,13 +1,14 @@
 
-var urlBase = ''
+var urlBase = '../assets/'
 
 var extension = 'php'
 
+/*
 var firstName = ""
 var lastName = ""
 var userID = 0
 var userInfo = ""
-
+*/
 
 function showCreateAccount()
 {
@@ -38,6 +39,7 @@ function onLogin()
 
   //var url = urlBase + 'login.' + extension
   var url = urlBase + 'loginWebsite.' + extension
+  console.log(url)
   // Create the JSON 
   var jsonPayload = '{"username" : "' + username + '", "password": "' + password + '"}'
 
@@ -54,8 +56,7 @@ function onLogin()
             {
               // Get the response from PHP Script
               var res = xhr.responseText
-              userInfo = res;
-              
+              //var userInfo = res;
 
               if(res.includes("Incorrect"))
               {
@@ -137,7 +138,7 @@ function registerNewUser()
         // Create the url 
         var url =   '/signupWebsite.' + extension
 
-        var jsonPayload = '{"firstName" : "' + cleanFirstName + '", "lastName" : "' + cleanLastName + '", "username" : "' + cleanUserName + '", "pw": "' + newPassword + '", "email" : "' + cleanEmail + '"}';
+        var jsonPayload = '{"firstName" : "' + cleanFirstName + '", "lastName" : "' + cleanLastName + '", "username" : "' + cleanUserName + '", "password": "' + newPassword + '", "email" : "' + cleanEmail + '"}';
 
         var xhr = new XMLHttpRequest()
         xhr.open("POST", url, true)
@@ -150,8 +151,6 @@ function registerNewUser()
             if(this.readyState == 4 && this.status == 200)
             {
               var res = xhr.responseText
-              console.log(res)
-
               if(res.includes("email") || res.includes("username") || res.includes("Error"))
               {
                 return document.getElementById("userAddResult").innerHTML =  res
