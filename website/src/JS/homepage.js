@@ -767,13 +767,111 @@ document.querySelector('#updateGoals').addEventListener("click", function(){
   var goals = document.querySelector('#goalsForm')
   document.getElementsByClassName("close")[0].style.display="block"
   goals.style.display="block"
+  for(var i = 0;i < 3;i++)
+  {
+    document.getElementsByClassName("modalButtons")[i].style.display="block"
+    document.getElementsByClassName("modalButtons")[i].style.cssFloat="left"
+  }
+
 })
 
-function closeModal()
+
+document.querySelector('#checkProgress').addEventListener("click", function(){
+  window.location.href="progress.html"
+})
+
+function closeModal(index)
 {
-  var span = document.getElementsByClassName("close")[0]
-  var form = document.getElementsByClassName("displayModal")[0]
+  var span = document.getElementsByClassName("close")[index]
+  var form = document.getElementsByClassName("displayModal")[index]
 
   span.style.display="none"
   form.style.display="none"
 }
+
+function removeModalButtons()
+{
+  var len = document.getElementsByClassName('modalButtons').length
+  for(var i = 0;i < len;i++)
+    document.getElementsByClassName('modalButtons')[i].style.display="none"
+}
+
+
+document.getElementsByClassName('modalButtons')[0].addEventListener("click", function(){
+  closeModal(0) // close the entire first modal window
+  removeModalButtons() // remove the buttons from first modal
+  getForm('#goalsForm1') // show modal
+  document.getElementsByClassName("close")[1].style.display="block"
+  document.querySelector('#goalsForm1').style.display="block"
+})
+
+document.querySelector('#submitCurrentWeight').addEventListener("click", function(){
+  closeModal(1)
+  getForm("#goalsForm2")
+  document.getElementsByClassName("close")[2].style.display="block"
+  document.querySelector('#goalsForm2').style.display="block"
+  var weight = document.querySelector('#currentWeight').value
+  inputWeight(weight, "inputWeights.", "currentWeight")
+})
+
+function inputWeight(currentWeight, apiName, jsonName)
+{
+  
+  url = urlBase + apiName + extension
+  var jsonPayload = '{"' + jsonName +'" : "' + currentWeight + '"}'
+
+  var xhr = new XMLHttpRequest()
+  xhr.open("POST", url, true)
+  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8")
+  try{
+    xhr.send(jsonPayload)
+    xhr.onreadystatechange = function()
+    {
+      if(this.readyState == 4 && this.status == 200)
+      {
+        var res = xhr.responseText
+        console.log(res)
+      }
+    }
+  }
+  catch(err)
+  {
+      console.log("fucked up")
+  }
+  
+}
+/*
+var xhr = new XMLHttpRequest()
+xhr.open("POST", url, true)
+xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8")
+try
+{
+  xhr.send(jsonPayload);
+  xhr.onreadystatechange = function()
+  {
+    if(this.readyState == 4 && this.status == 200)
+    {
+      // Get the response from PHP Script
+      var res = xhr.responseText
+
+      // Parse the json received from php
+      var jsonObject = JSON.parse(res)
+     
+      userID = jsonObject.userID
+      firstName = jsonObject.firstName
+      lastName = jsonObject.lastName
+      email = jsonObject.email
+      username = jsonObject.username
+      
+      //document.getElementById('usersName').innerHTML = jsonObject.firstName + " "  + jsonObject.lastName
+      document.getElementById('getUsername').innerHTML = username
+      document.getElementById('id').innerHTML = userID
+
+          if(userID > 0)
+            getMacros()
+          else
+            return
+    }
+  }
+}
+*/

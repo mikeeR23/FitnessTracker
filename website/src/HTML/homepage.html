@@ -9,7 +9,7 @@
 </head>
 <body onload="getData();">
 	<div id="side-nav">
-		<h1>Fitness App</h1>
+		<h1>Fitness Tracker</h1>
 		<h1 id="hello">Hello, <span id="getUsername"></span><span id="id" style="display:none"></span></h1><br>
 		<p id="macros">Your macros are as follows: </p><br>
 		<p>Total Calories: <span id="calories"></span></p><br>
@@ -19,7 +19,7 @@
 		<button type="submit"  id="updateMacros" class="sideNavButtons sideNavHovers">Update macros</button><br>
 		<button type="submit"  id="workoutTrackerButton" class="sideNavButtons sideNavHovers">Track Workout</button>
 		<button type="submit"  id="updateGoals" class="sideNavButtons sideNavHovers">Set/Update Goals</button>
-		<button type="submit" class="sideNavButtons sideNavHovers"></button>
+		<button type="submit"  id="checkProgress" class="sideNavButtons sideNavHovers">Check Progress</button>
 		<button type="submit"  id="logout" class="sideNavButtons sideNavHovers">Logout</button>
 	</div>
 	<div id="mid">
@@ -50,7 +50,17 @@
 			<button class="modalButtons">Gain Weight</button>
 			<button class="modalButtons">Lost Weight</button>
 			<button class="modalButtons">Maintain Weight</button>
-			<span class="close" onclick="closeModal();">&times;</span>
+			<span class="close" onclick="closeModal(0);">&times;</span>
+		</div>
+		<div class="displayModal goalsForm" id="goalsForm1">
+			<h3>Enter Current Weight:</h3> <input type="text" placeholder="Weight (lbs)" id="currentWeight">
+			<button type="submit" id="submitCurrentWeight" class="goalsFormBtn">Submit</button>
+			<span class="close" onclick="closeModal(1);">&times;</span>			
+		</div>
+		<div class="displayModal goalsForm" id="goalsForm2">
+			<h3>Enter Goal Weight:</h3><input type="text" placeholder="Weight (lbs)" >
+			<button type="submit" class="goalsFormBtn">Submit</button>
+			<span class="close" onclick="closeModal(2)">&times;</span>
 		</div>
 		<div id="middle">
 			<h1>Calories Remaining</h1><br>

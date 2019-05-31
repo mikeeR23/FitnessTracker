@@ -13,7 +13,6 @@
 	$pw1 = $data["password"];
 	$email = $data["email"];
 
-
 	$conn = new mysqli($server, $username, $password, $database);
 
 	// Error connecting to database
@@ -26,7 +25,7 @@
 	else
 	{
 		// Check if email already exists
-		$emailQuery = "select email from users where email = '$email'";
+		$emailQuery = "call checkEmailInUse('$email')";
 		$result = $conn->query($emailQuery);
 
 		// If the email exists, exit script
@@ -38,20 +37,19 @@
 		
 
 		// Check if the username is already in use
-		$usernameQuery = "select username from users where username = '$user'";
+		$usernameQuery = "call checkUsernameInUse('$user')";
 		$result = $conn->query($usernameQuery);
 
 		// Exit if username is in use already
 		if($result->num_rows > 0)
 		{
 			echo "That username is already in use. Please enter a different username";
-			//returnWithError("That email is already in use. Please enter a different email");
 			exit();
 		}
 
 		// SQL query
-		$sql = "insert into users (firstName, lastName, username, password, email) values ('$firstName', '$lastName', '$user', '$pw1', '$email');";
-
+		//$sql = "insert into users (firstName, lastName, username, password, email) values ('$firstName', '$lastName', '$user', '$pw1', '$email');";
+		$sql = "call insertNewUser('$firstName', '$lastName, '$user', '$pw1', '$email')";
 		// Execute query
 		$result = $conn->query($sql);
 

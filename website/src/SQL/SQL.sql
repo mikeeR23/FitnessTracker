@@ -28,9 +28,28 @@ BEGIN
 select * from users where username=username and password=pass;
 END%%
 
-drop procedure if exists `getMacros`;
+drop procedure if exists `getMacros`%%
 create procedure getMacros(IN userID int)
 BEGIN
 select * from macros where userID=userID;
+END%%
+
+drop procedure if exists `checkEmailInUse`%%
+create procedure checkEmailInUse(IN email varchar(255))
+BEGIN
+select email from users where email=email;
+END%%
+
+drop procedure if exists `checkUsernameInUse`%%
+create procedure checkUsernameInUse(IN username varchar(255))
+BEGIN
+select username from users where username=username;
+END%%
+
+drop procedure if exists `insertNewUser`%%
+create procedure insertNewUser(IN firstName varchar(50), IN lastName varchar(50), IN username varchar(255), 
+                                IN pw varchar(255), IN email varchar(255))
+BEGIN
+insert into users (firstName, lastName, username, password, email) values(firstName, lastName, username, pw, email);
 END%%
 
